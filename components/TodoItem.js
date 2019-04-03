@@ -6,29 +6,38 @@ import {
   StyleSheet,
 } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
+import SwipeableRow from 'SwipeableRow'
+import DeleteButton from './DeleteButton'
 
 const TodoItem = ({
   title,
   done,
 }) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.todo}>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          style={done ? styles.done : styles.check}
-        >
-          <FontAwesome
-            name="check"
-            size={14}
-            color={done ? '#FFFFFF' : '#E0E0E0'}
-          />
-        </TouchableOpacity>
-        <Text style={styles.title}>
-          {title}
-        </Text>
+    <SwipeableRow
+      swipeThreshold={10}
+      maxSwipeDistance={60}
+      slideoutView={<DeleteButton />}
+      preventSwipeRight={true}
+    >
+      <View style={styles.container}>
+        <View style={styles.todo}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={done ? styles.done : styles.check}
+          >
+            <FontAwesome
+              name="check"
+              size={14}
+              color={done ? '#FFFFFF' : '#E0E0E0'}
+            />
+          </TouchableOpacity>
+          <Text style={styles.title}>
+            {title}
+          </Text>
+        </View>
       </View>
-    </View>
+    </SwipeableRow>
   )
 }
 
