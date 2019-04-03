@@ -13,12 +13,17 @@ export default class App extends React.Component {
       title: '운전면허 도로 주행 연수',
       done: false,
     }],
+    showModal: false,
   }
 
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Header />
+        <Header
+          show={() => {
+            this.setState({ showModal: true })
+          }}
+        />
         <FlatList
           data={this.state.todos}
           renderItem={({ item }) => {
@@ -26,7 +31,12 @@ export default class App extends React.Component {
           }}
           keyExtractor={(_, index) => `${index}`}
         />
-        <TodoModal isVisible={false} />
+        <TodoModal
+          isVisible={this.state.showModal}
+          hide={() => {
+            this.setState({ showModal: false})
+          }}
+        />
       </SafeAreaView>
     );
   }

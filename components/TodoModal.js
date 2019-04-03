@@ -8,10 +8,12 @@ import Modal from 'react-native-modal'
 
 const TodoModal = ({
   isVisible,
+  hide,
 }) => {
   return (
     <Modal
       isVisible={isVisible}
+      onBackdropPress={hide}
       avoidKeyboard
       style={styles.modal}
     >
