@@ -8,8 +8,10 @@ import Modal from 'react-native-modal'
 
 const TodoModal = ({
   isVisible,
+  add,
   hide,
 }) => {
+  let content = ''
   return (
     <Modal
       isVisible={isVisible}
@@ -20,6 +22,8 @@ const TodoModal = ({
       <View style={styles.container}>
         <TextInput
           placeholder="새로운 할 일을 추가해 주세요"
+          onChangeText={(text) => { content = text }}
+          onEndEditing={() => add(content)}
         />
       </View>
     </Modal>

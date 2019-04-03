@@ -33,6 +33,15 @@ export default class App extends React.Component {
         />
         <TodoModal
           isVisible={this.state.showModal}
+          add={(title) => {
+            this.setState({
+              todos: this.state.todos.concat({
+                title: title,
+                done: false,
+              }),
+              showModal: false,
+            })
+          }}
           hide={() => {
             this.setState({ showModal: false})
           }}
