@@ -26,8 +26,18 @@ export default class App extends React.Component {
         />
         <FlatList
           data={this.state.todos}
-          renderItem={({ item }) => {
-            return (<TodoItem title={item.title} done={item.done} />)
+          renderItem={({ item, index }) => {
+            return (
+              <TodoItem
+                title={item.title}
+                done={item.done}
+                remove={() => {
+                  this.setState({
+                    todos: this.state.todos.filter((_, i) => i !== index),
+                  })
+                }}
+              />
+            )
           }}
           keyExtractor={(_, index) => `${index}`}
         />

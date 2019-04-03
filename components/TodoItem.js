@@ -11,13 +11,14 @@ import DeleteButton from './DeleteButton'
 
 const TodoItem = ({
   title,
+  remove,
   done,
 }) => {
   return (
     <SwipeableRow
       swipeThreshold={10}
       maxSwipeDistance={60}
-      slideoutView={<DeleteButton />}
+      slideoutView={<DeleteButton onPress={remove} />}
       preventSwipeRight={true}
     >
       <View style={styles.container}>
