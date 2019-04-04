@@ -1,5 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, SafeAreaView, FlatList } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  FlatList, 
+  AsyncStorage,
+} from 'react-native';
 import Header from './components/Header'
 import TodoItem from './components/TodoItem'
 import TodoModal from './components/TodoModal'
@@ -14,6 +20,14 @@ export default class App extends React.Component {
       done: false,
     }],
     showModal: false,
+  }
+
+  componentWillMount() {
+    AsyncStorage.getItem('@todo:state').then((state) => this.setState(JSON.parse(state)))
+  }
+
+  save = () => {
+    AsyncStorage.setItem('@todo:state', JSON.stringify(this.state))
   }
 
   render() {
@@ -34,12 +48,12 @@ export default class App extends React.Component {
                 toggle={() => {
                   const newTodos = [...this.state.todos]
                   newTodos[index].done = !newTodos[index].done
-                  this.setState({ todos: newTodos })
+                  this.setState({ todos: newTodos }, this.save)
                 }}
                 remove={() => {
                   this.setState({
                     todos: this.state.todos.filter((_, i) => i !== index),
-                  })
+                  }, this.save)
                 }}
               />
             )
@@ -55,7 +69,7 @@ export default class App extends React.Component {
                 done: false,
               }),
               showModal: false,
-            })
+            }, this.save)
           }}
           hide={() => {
             this.setState({ showModal: false})
