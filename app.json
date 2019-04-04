@@ -26,6 +26,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "me.injung.todo.practice",
       "icon": "./assets/android-icon.png",
       "adaptiveIcon": {
         "backgroundColor": "#6830CF",
