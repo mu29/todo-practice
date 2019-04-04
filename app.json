@@ -10,11 +10,10 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#6830CF"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -23,7 +22,15 @@
       "**/*"
     ],
     "ios": {
+      "icon": "./assets/ios-icon.png",
       "supportsTablet": true
+    },
+    "android": {
+      "icon": "./assets/android-icon.png",
+      "adaptiveIcon": {
+        "backgroundColor": "#6830CF",
+        "foregroundImage": "./assets/android-foreground.png"
+      }
     }
   }
 }
