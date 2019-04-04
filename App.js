@@ -31,6 +31,11 @@ export default class App extends React.Component {
               <TodoItem
                 title={item.title}
                 done={item.done}
+                toggle={() => {
+                  const newTodos = [...this.state.todos]
+                  newTodos[index].done = !newTodos[index].done
+                  this.setState({ todos: newTodos })
+                }}
                 remove={() => {
                   this.setState({
                     todos: this.state.todos.filter((_, i) => i !== index),

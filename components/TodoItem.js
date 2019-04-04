@@ -12,6 +12,7 @@ import DeleteButton from './DeleteButton'
 const TodoItem = ({
   title,
   remove,
+  toggle,
   done,
 }) => {
   return (
@@ -25,6 +26,7 @@ const TodoItem = ({
         <View style={styles.todo}>
           <TouchableOpacity
             activeOpacity={0.8}
+            onPress={toggle}
             style={done ? styles.done : styles.check}
           >
             <FontAwesome
