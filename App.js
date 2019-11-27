@@ -5,6 +5,8 @@ import {
   SafeAreaView,
   FlatList, 
   AsyncStorage,
+  Platform,
+  StatusBar,
 } from 'react-native';
 import Header from './components/Header'
 import TodoItem from './components/TodoItem'
@@ -84,5 +86,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    paddingTop: Platform.OS === 'ios' ? 0 : StaturBar.currentHeight,
   },
 });
