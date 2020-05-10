@@ -20,7 +20,6 @@ const DeleteButton = () => {
 
 const styles = StyleSheet.create({
   button: {
-    marginLeft: 'auto',
     width: 60,
     height: 60,
     backgroundColor: '#FE5746',

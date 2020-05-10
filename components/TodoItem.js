@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
-import SwipeableRow from 'SwipeableRow'
+import Swipeable from 'react-native-gesture-handler/Swipeable'
 import DeleteButton from './DeleteButton'
 
 const TodoItem = ({
@@ -14,11 +14,8 @@ const TodoItem = ({
   done,
 }) => {
   return (
-    <SwipeableRow
-      swipeThreshold={10}
-      maxSwipeDistance={60}
-      slideoutView={<DeleteButton />}
-      preventSwipeRight={true}
+    <Swipeable
+      renderRightActions={() => <DeleteButton />}
     >
       <View style={styles.container}>
         <View style={styles.todo}>
@@ -37,7 +34,7 @@ const TodoItem = ({
           </Text>
         </View>
       </View>
-    </SwipeableRow>
+    </Swipeable>
   )
 }
 
